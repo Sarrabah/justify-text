@@ -4,7 +4,6 @@ import justifyRoute from './routes/justifyRoute';
 import authRouter from './routes/authentificationRoute';
 import {jwtAuthMiddleware} from './middleware/authentification';
 
-
 const app = express();
 const port = process.env.PORT || 3000;
 app.use(bodyParser.text({ type: 'text/plain' }));
