@@ -18,7 +18,7 @@ export const jwtAuthMiddleware = (req: Request, res: Response, next: NextFunctio
     if (err) {
       return res.status(403).json({ message: 'Forbidden' });
     }
-    
+
     next();
   });
-};
+}

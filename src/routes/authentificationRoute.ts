@@ -14,7 +14,7 @@ authRouter.post('/', (req: Request, res: Response) => {
   if (!secretKey) {
     throw new Error('JWT secret key is not defined');
   }
-  const token = jwt.sign({ email }, secretKey);
+  const token = jwt.sign({ email }, secretKey, { expiresIn: '24h' });
   res.json({ token });
 });
 
