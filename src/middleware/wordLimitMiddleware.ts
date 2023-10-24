@@ -6,7 +6,7 @@ export default function wordLimitMiddleware(req: Request, res: Response, next: N
     const token = req.headers.authorization;
 
     if (!token) {
-        return res.status(401).json({ message: 'Unauthorized' });
+        return res.status(401).json({ message: 'Unauthorized, missing token' });
     }
     const wordCount = countWords(req.body);
     const newUsage = (tokenUsage[token] || 0) + wordCount;

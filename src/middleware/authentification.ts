@@ -9,14 +9,14 @@ export const jwtAuthMiddleware = (req: Request, res: Response, next: NextFunctio
   const token = req.header('Authorization')?.split(' ')[1];
 
   if (!token) {
-    return res.status(401).json({ message: 'Unauthorized' });
+    return res.status(401).json({ message: 'Unauthorized, missing token' });
   }
   if (!secretKey) {
     throw new Error('JWT secret key is not defined');
   }
   jwt.verify(token, secretKey, (err, user) => {
     if (err) {
-      return res.status(403).json({ message: 'Forbidden' });
+      return res.status(403).json({ message: 'Forbidden, invalid token' });
     }
 
     next();
